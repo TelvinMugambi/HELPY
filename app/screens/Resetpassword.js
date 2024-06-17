@@ -8,6 +8,12 @@ import { supabase } from '../../utils/supabase';
 export default function Resetpassword(){
     const [email, setEmail]= useState('');
 
+    async function sendresetpasswordemail(){
+        await supabase.auth.resetPasswordForEmail(
+            email, 
+            {redirectTo: 'http://192.168.100.77/screens/Changepassword',})  
+    }
+
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
             <View style={{ flex: 1, marginHorizontal: 22,  }}>
@@ -65,7 +71,7 @@ export default function Resetpassword(){
                         marginTop: 18,
                         marginBottom: 4,
                     }}
-                    onPress={() => console.log("Implement reset password function")}
+                    onPress={() => sendresetpasswordemail()}
                 />                
             </View>
         </SafeAreaView>
