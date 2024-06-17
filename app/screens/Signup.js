@@ -1,10 +1,18 @@
 import { View, Text, Image, Pressable,Alert, TextInput, ScrollView, StyleSheet, TouchableOpacity, AppState } from 'react-native'
 import { SafeAreaView } from "react-native-safe-area-context";
+import React, { useState } from 'react'
 import COLORS from '../../constants/color';
 import { Ionicons } from "@expo/vector-icons";
 import Button from '../../components/Button';
+import { Stack, router, useNavigation } from 'expo-router';
 
 export default function Signup(){
+const [email, setEmail] = useState('')
+const [password, setPassword] = useState('')
+const [username, setUsername] = useState('')
+const [loading, setLoading] = useState(false)
+const [isPasswordShown, setIsPasswordShown] = useState(true);
+
     return(
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
             <ScrollView>
@@ -207,7 +215,7 @@ export default function Signup(){
                 }}>
                     <Text style={{ fontSize: 16, color: COLORS.black }}>Already have an account</Text>
                     <Pressable
-                        onPress={() => console.log('Go to login page')}
+                        onPress={() =>  router.push("/screens/Login")}
                     >
                         <Text style={{
                             fontSize: 16,
