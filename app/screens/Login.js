@@ -5,12 +5,24 @@ import COLORS from '../../constants/color';
 import Button from '../../components/Button';
 import { Ionicons } from "@expo/vector-icons";
 import { router } from 'expo-router';
+import { supabase } from '../../utils/supabase';
 
 export default function Login(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [isPasswordShown, setIsPasswordShown] = useState(true);
+
+    async function signInWithEmail() {
+        setLoading(true)
+        const { error } = await supabase.auth.signInWithPassword({
+          email: email,
+          password: password,
+        })
+    
+        if (error) Alert.alert(error.message)
+        setLoading(false)
+      }
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
@@ -119,7 +131,7 @@ export default function Login(){
                         marginBottom: 4,
                     }}
                     disabled={loading} 
-                    onPress={() => console.log('Signin function')}
+                    onPress={() => signInWithEmail()}
                 />
 
 

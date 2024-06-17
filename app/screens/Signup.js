@@ -5,13 +5,44 @@ import COLORS from '../../constants/color';
 import { Ionicons } from "@expo/vector-icons";
 import Button from '../../components/Button';
 import { Stack, router, useNavigation } from 'expo-router';
+import { supabase } from '../../utils/supabase';
+
+// Tells Supabase Auth to continuously refresh the session automatically if
+// the app is in the foreground. When this is added, you will continue to receive
+// `onAuthStateChange` events with the `TOKEN_REFRESHED` or `SIGNED_OUT` event
+// if the user's session is terminated. This should only be registered once.
+AppState.addEventListener('change', (state) => {
+    if (state === 'active') {
+      supabase.auth.startAutoRefresh()
+    } else {
+      supabase.auth.stopAutoRefresh()
+    }
+})
+
+
 
 export default function Signup(){
-const [email, setEmail] = useState('')
-const [password, setPassword] = useState('')
-const [username, setUsername] = useState('')
-const [loading, setLoading] = useState(false)
-const [isPasswordShown, setIsPasswordShown] = useState(true);
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [loading, setLoading] = useState(false)
+    const [isPasswordShown, setIsPasswordShown] = useState(true);
+
+    async function signUpWithEmail() {
+        setLoading(true)
+        const {
+          data: { session },
+          error,
+        } = await supabase.auth.signUp({
+          email: email,
+          password: password,
+        })
+    
+        if (error) console.log(error)
+        if (session) Alert.alert('Please check your inbox for email verification!')
+        setLoading(false)
+    }
+
+
 
     return(
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
@@ -65,34 +96,7 @@ const [isPasswordShown, setIsPasswordShown] = useState(true);
                     </View>
                 </View>
 
-                <View style={{ marginBottom: 12 }}>
-                    <Text style={{
-                        fontSize: 16,
-                        fontWeight: 400,
-                        marginVertical: 8
-                    }}>Username</Text>
-
-                    <View style={{
-                        width: "100%",
-                        height: 48,
-                        borderColor: COLORS.black,
-                        borderWidth: 1,
-                        borderRadius: 8,
-                        alignItems: "center",
-                        justifyContent: "center",
-                        paddingLeft: 22
-                    }}>
-                        <TextInput
-                            placeholder='Enter your username'
-                            placeholderTextColor={COLORS.black}
-                            onChangeText={(username) => setUsername(username)}
-                            value={username}
-                            style={{
-                                width: "100%"
-                            }}
-                        />
-                    </View>
-                </View>
+                
 
                 <View style={{ marginBottom: 12 }}>
                     <Text style={{
@@ -150,7 +154,7 @@ const [isPasswordShown, setIsPasswordShown] = useState(true);
                         marginBottom: 4,
                     }}
                     disabled={loading}
-                    onPress={() => console.log('Impelement Sign Up')}
+                    onPress={() => signUpWithEmail()}
                    
                 />
 
