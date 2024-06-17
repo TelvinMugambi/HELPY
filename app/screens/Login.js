@@ -156,7 +156,7 @@ export default function Login(){
                 }}>
                     <Text style={{ fontSize: 16, color: COLORS.black }}>Forgot your password? </Text>
                     <Pressable
-                        onPress={() => console.log('Move to Rest password page')}
+                        onPress={() => router.push("/screens/Resetpassword")}
                     >
                         <Text style={{
                             fontSize: 16,
