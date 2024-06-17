@@ -24,6 +24,7 @@ AppState.addEventListener('change', (state) => {
 export default function Signup(){
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [username, setUsername] = useState('')
     const [loading, setLoading] = useState(false)
     const [isPasswordShown, setIsPasswordShown] = useState(true);
 
@@ -38,7 +39,10 @@ export default function Signup(){
         })
     
         if (error) console.log(error)
-        if (session) Alert.alert('Please check your inbox for email verification!')
+        if (!session) {
+            Alert.alert('Please check your inbox for email verification!')
+            router.push("/screens/Login")
+        }
         setLoading(false)
     }
 
@@ -89,6 +93,35 @@ export default function Signup(){
                             onChangeText={(email) => setEmail(email)}
                             value={email}
                             keyboardType='email-address'
+                            style={{
+                                width: "100%"
+                            }}
+                        />
+                    </View>
+                </View>
+
+                <View style={{ marginBottom: 12 }}>
+                    <Text style={{
+                        fontSize: 16,
+                        fontWeight: 400,
+                        marginVertical: 8
+                    }}>Username</Text>
+
+                    <View style={{
+                        width: "100%",
+                        height: 48,
+                        borderColor: COLORS.black,
+                        borderWidth: 1,
+                        borderRadius: 8,
+                        alignItems: "center",
+                        justifyContent: "center",
+                        paddingLeft: 22
+                    }}>
+                        <TextInput
+                            placeholder='Enter your username'
+                            placeholderTextColor={COLORS.black}
+                            onChangeText={(username) => setUsername(username)}
+                            value={username}
                             style={{
                                 width: "100%"
                             }}

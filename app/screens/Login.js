@@ -20,7 +20,10 @@ export default function Login(){
           password: password,
         })
     
-        if (error) Alert.alert(error.message)
+        if (error) {Alert.alert(error.message)}
+        else{
+            router.push("/screens/Home")
+        }
         setLoading(false)
       }
 
