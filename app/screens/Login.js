@@ -22,7 +22,7 @@ export default function Login(){
     
         if (error) {Alert.alert(error.message)}
         else{
-            router.push("/screens/Home")
+            router.push("/screens/tabs/Home")
         }
         setLoading(false)
       }
@@ -137,17 +137,6 @@ export default function Login(){
                     onPress={() => signInWithEmail()}
                 />
 
-
-                <Button
-                    title="Home"
-                    filled
-                    style={{
-                        marginTop: 18,
-                        marginBottom: 4,
-                    }}
-                    disabled={loading} 
-                    onPress={() => console.log('Move to Home Page')}
-                />
                 
                 <View style={{
                     flexDirection: "row",
