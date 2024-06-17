@@ -136,7 +136,6 @@ export default function Login(){
                     disabled={loading} 
                     onPress={() => signInWithEmail()}
                 />
-
                 
                 <View style={{
                     flexDirection: "row",
