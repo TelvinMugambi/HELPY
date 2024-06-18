@@ -136,6 +136,16 @@ export default function Login(){
                     disabled={loading} 
                     onPress={() => signInWithEmail()}
                 />
+                <Button
+                    title="Mimi"
+                    filled
+                    style={{
+                        marginTop: 18,
+                        marginBottom: 4,
+                    }}
+                    disabled={loading} 
+                    onPress={() => router.push("/screens/tabs/Home")}
+                />
                 
                 <View style={{
                     flexDirection: "row",

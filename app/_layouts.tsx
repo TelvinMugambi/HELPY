@@ -10,7 +10,7 @@ export default function RootLayout(){
             <Stack.Screen name="Resetpassword" />
             <Stack.Screen name="Changepassword" />
             <Stack.Screen name="(tabs)"/>
-            <Stack.Screen name = "Home"/>
+
             
         </Stack>
     )
