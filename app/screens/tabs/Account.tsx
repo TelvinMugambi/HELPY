@@ -15,13 +15,18 @@ export default function Account({ session }: { session: Session }) {
   
     useEffect(() => {
       if (session) getProfile()
+      else{
+    console.log("Error")
+    }
     }, [session])
+
+    console.log(session)
   
     async function getProfile() {
       try {
         setLoading(true)
         if (!session?.user) throw new Error('No user on the session!')
-  
+      
         const { data, error, status } = await supabase
           .from('profiles')
           .select(`username, phone, avatar_url,location`)

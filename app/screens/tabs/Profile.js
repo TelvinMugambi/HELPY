@@ -15,12 +15,14 @@ export default function Profile(session){
 
     useEffect(() => {
         if (session) getProfile()
+            console.log(session)
     }, [session])
 
     async function getProfile() {
         try {
             setLoading(true)
             if (!session?.user) throw new Error('No user on the session!')
+                getSession()
       
             const { data, error, status } = await supabase
               .from('profiles')
@@ -44,6 +46,12 @@ export default function Profile(session){
           } finally {
             setLoading(false)
           }
+    }
+
+    async function getSession(){
+        const {data:session} = await supabase.auth.getSession()
+
+        console.log(session)
     }
 
     async function updateProfile({

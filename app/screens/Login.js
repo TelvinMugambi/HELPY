@@ -13,19 +13,42 @@ export default function Login(){
     const [loading, setLoading] = useState(false);
     const [isPasswordShown, setIsPasswordShown] = useState(true);
 
+    // async function signInWithEmail() {
+    //     setLoading(true)
+    //     const { data:{session},error } = await supabase.auth.signInWithPassword({
+    //       email: email,
+    //       password: password,
+    //     })
+    
+    //     if (error) {Alert.alert(error.message)}
+    //     if(!session){
+            
+    //         router.push("/screens/tabs/Home")
+    //     }
+    //     setLoading(false)
+    // }
+
     async function signInWithEmail() {
         setLoading(true)
-        const { error } = await supabase.auth.signInWithPassword({
+        const { data:{session}, error } = await supabase.auth.signInWithPassword({
           email: email,
           password: password,
         })
     
         if (error) {Alert.alert(error.message)}
-        else{
+        else {
+            Alert.alert("Logged in")
+            console.log(session)
             router.push("/screens/tabs/Home")
         }
         setLoading(false)
       }
+
+    async function getSession(){
+        const {data:session} = await supabase.auth.getSession()
+
+        console.log(session)
+    }
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
