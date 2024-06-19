@@ -1,11 +1,13 @@
 import { View, Text, Image, Pressable,Alert, TextInput, ScrollView, StyleSheet, TouchableOpacity, AppState } from 'react-native'
 import { SafeAreaView } from "react-native-safe-area-context";
-import React, { useState } from 'react'
-import COLORS from '../../constants/color';
+import React, { useState, useEffect } from 'react'
+import COLORS from '../../../constants/color';
 import { Ionicons } from "@expo/vector-icons";
-import Button from '../../components/Button';
+import Button from '../../../components/Button';
 import { Stack, router, useNavigation } from 'expo-router';
-import { supabase } from '../../utils/supabase';
+import { supabase } from '../../../utils/supabase';
+import { Session } from '@supabase/supabase-js'
+
 
 // Tells Supabase Auth to continuously refresh the session automatically if
 // the app is in the foreground. When this is added, you will continue to receive
@@ -24,9 +26,15 @@ AppState.addEventListener('change', (state) => {
 export default function Signup(){
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [username, setUsername] = useState('')
     const [loading, setLoading] = useState(false)
     const [isPasswordShown, setIsPasswordShown] = useState(true);
+
+
+    useEffect(() => {
+        supabase.auth.getSession().then(({ data: { session } }) => {
+          setSession(session)
+          console.log("Sign in session: ", session)
+    })})
 
     async function signUpWithEmail() {
         setLoading(true)
@@ -41,7 +49,7 @@ export default function Signup(){
         if (error) console.log(error)
         if (!session) {
             Alert.alert('Please check your inbox for email verification!')
-            router.push("/screens/Login")
+            router.push("./Login")
         }
         setLoading(false)
     }
@@ -67,7 +75,7 @@ export default function Signup(){
                     <Text style={{
                         fontSize: 16,
                         color: COLORS.black
-                    }}>Connect with your friend today!</Text>
+                    }}>Connect with skilled labourers today!</Text>
                 </View>
             
                 <View style={{ marginBottom: 12 }}>
@@ -99,37 +107,6 @@ export default function Signup(){
                         />
                     </View>
                 </View>
-
-                <View style={{ marginBottom: 12 }}>
-                    <Text style={{
-                        fontSize: 16,
-                        fontWeight: 400,
-                        marginVertical: 8
-                    }}>Username</Text>
-
-                    <View style={{
-                        width: "100%",
-                        height: 48,
-                        borderColor: COLORS.black,
-                        borderWidth: 1,
-                        borderRadius: 8,
-                        alignItems: "center",
-                        justifyContent: "center",
-                        paddingLeft: 22
-                    }}>
-                        <TextInput
-                            placeholder='Enter your username'
-                            placeholderTextColor={COLORS.black}
-                            onChangeText={(username) => setUsername(username)}
-                            value={username}
-                            style={{
-                                width: "100%"
-                            }}
-                        />
-                    </View>
-                </View>
-
-                
 
                 <View style={{ marginBottom: 12 }}>
                     <Text style={{
@@ -252,7 +229,7 @@ export default function Signup(){
                 }}>
                     <Text style={{ fontSize: 16, color: COLORS.black }}>Already have an account</Text>
                     <Pressable
-                        onPress={() =>  router.push("/screens/Login")}
+                        onPress={() =>  router.push("./Login")}
                     >
                         <Text style={{
                             fontSize: 16,

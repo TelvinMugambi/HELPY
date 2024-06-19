@@ -1,11 +1,14 @@
 import { View, Text, Image , Pressable, TextInput, TouchableOpacity, Alert } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { SafeAreaView } from "react-native-safe-area-context";
-import COLORS from '../../constants/color';
-import Button from '../../components/Button';
+import COLORS from '../../../constants/color';
+import Button from '../../../components/Button';
 import { Ionicons } from "@expo/vector-icons";
 import { router } from 'expo-router';
-import { supabase } from '../../utils/supabase';
+import { supabase } from '../../../utils/supabase';
+import { Session } from '@supabase/supabase-js'
+
+
 
 export default function Login(){
     const [email, setEmail] = useState('');
@@ -28,6 +31,12 @@ export default function Login(){
     //     setLoading(false)
     // }
 
+    useEffect(() => {
+        supabase.auth.getSession().then(({ data: { session } }) => {
+          setSession(session)
+          console.log("Log in session: ", session)
+    })})
+
     async function signInWithEmail() {
         setLoading(true)
         const { data:{session}, error } = await supabase.auth.signInWithPassword({
@@ -38,8 +47,8 @@ export default function Login(){
         if (error) {Alert.alert(error.message)}
         else {
             Alert.alert("Logged in")
-            console.log(session)
-            router.push("/screens/tabs/Home")
+            console.log("Button clicked:",session)
+            router.push("../../hub/screens/Home")
         }
         setLoading(false)
       }
@@ -159,16 +168,7 @@ export default function Login(){
                     disabled={loading} 
                     onPress={() => signInWithEmail()}
                 />
-                <Button
-                    title="Mimi"
-                    filled
-                    style={{
-                        marginTop: 18,
-                        marginBottom: 4,
-                    }}
-                    disabled={loading} 
-                    onPress={() => router.push("/screens/tabs/Home")}
-                />
+
                 
                 <View style={{
                     flexDirection: "row",
@@ -196,7 +196,7 @@ export default function Login(){
                 }}>
                     <Text style={{ fontSize: 16, color: COLORS.black }}>Don't have an account ? </Text>
                     <Pressable
-                        onPress={() => router.push("/screens/Signup")}
+                        onPress={() => router.push("./Signup")}
                     >
                         <Text style={{
                             fontSize: 16,

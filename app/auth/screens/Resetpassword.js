@@ -1,9 +1,9 @@
 import { View, Text, Image , Pressable, TextInput, TouchableOpacity, Linking } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from "react-native-safe-area-context";
-import COLORS from '../../constants/color';
-import Button from '../../components/Button';
-import { supabase } from '../../utils/supabase';
+import COLORS from '../../../constants/color';
+import Button from '../../../components/Button';
+import { supabase } from '../../../utils/supabase';
 
 export default function Resetpassword(){
     const [email, setEmail]= useState('');

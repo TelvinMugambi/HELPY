@@ -1,17 +1,13 @@
 import { Stack } from "expo-router";
-import React from "react";
 
-export default function RootLayout(){
+export default function auth_layout(){
     return(
-        <Stack>
-            <Stack.Screen name = "index"/>
+    <Stack>
+            <Stack.Screen name = "Welcome"/>
             <Stack.Screen name="Signup"/>
             <Stack.Screen name="Login" />
             <Stack.Screen name="Resetpassword" />
             <Stack.Screen name="Changepassword" />
-            <Stack.Screen name="(tabs)"/>
-
-            
-        </Stack>
+    </Stack>
     )
 }
