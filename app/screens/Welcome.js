@@ -1,9 +1,12 @@
+import COLORS from "../../constants/color";
+import Button from "../../components/Button";
 import { View, Text, Pressable, Image } from 'react-native'
 import React from 'react'
 import { LinearGradient } from "expo-linear-gradient";
-import COLORS from '../../../constants/color';
-import Button from '../../../components/Button';
-import { router } from 'expo-router';
+import { router } from "expo-router";
+
+
+
 export default function Welcome(){
     return (
        
@@ -17,7 +20,7 @@ export default function Welcome(){
                 
             <View>
                     <Image
-                        source={require("../../../assets/hero1.jpg")}
+                        source={require("../../assets/hero1.jpg")}
                         style={{
                             height: 100,
                             width: 100,
@@ -31,9 +34,9 @@ export default function Welcome(){
                             ]
                         }}
                     />
-    
+
                     <Image
-                        source={require("../../../assets/hero3.jpg")}
+                        source={require("../../assets/hero3.jpg")}
                         style={{
                             height: 100,
                             width: 100,
@@ -48,9 +51,9 @@ export default function Welcome(){
                             ]
                         }}
                     />
-    
+
                     <Image
-                        source={require("../../../assets/hero3.jpg")}
+                        source={require("../../assets/hero3.jpg")}
                         style={{
                             width: 100,
                             height: 100,
@@ -65,9 +68,9 @@ export default function Welcome(){
                             ]
                         }}
                     />
-    
+
                     <Image
-                        source={require("../../../assets/hero2.jpg")}
+                        source={require("../../assets/hero2.jpg")}
                         style={{
                             height: 200,
                             width: 200,
@@ -83,9 +86,9 @@ export default function Welcome(){
                         }}
                     />
                 </View>
-    
+
                 {/* content  */}
-    
+
                 <View style={{
                     paddingHorizontal: 22,
                     position: "absolute",
@@ -102,7 +105,7 @@ export default function Welcome(){
                         fontWeight: 800,
                         color: COLORS.white
                     }}>Started</Text>
-    
+
                     <View style={{ marginVertical: 22 }}>
                         <Text style={{
                             fontSize: 16,
@@ -114,16 +117,16 @@ export default function Welcome(){
                             color: COLORS.white,
                         }}>Convinent, Fast and Reliable</Text>
                     </View>
-    
+
                     <Button
-                        title="Get Started"
+                        title="Join Now"
                         onPress={() => router.push("./Signup")}
                         style={{
                             marginTop: 22,
                             width: "100%"
                         }}
                     />
-    
+
                     <View style={{
                         flexDirection: "row",
                         marginTop: 12,
@@ -143,7 +146,7 @@ export default function Welcome(){
                                 marginLeft: 4
                             }}>Login</Text>
                         </Pressable>
-    
+
                     </View>
                 </View>
             </View>

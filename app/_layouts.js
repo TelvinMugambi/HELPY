@@ -1,11 +1,11 @@
-import { Stack } from "expo-router";
-import React from "react";
+import { Stack } from "expo-router"
 
-export default function RootLayout(){
+export default () =>{
     return(
         <Stack>
-            <Stack.Screen name = "auth/_layouts"/>
-            <Stack.Screen name = "hub/_layout"/>
+            <Stack.Screen name = "index" options={{headerShown: false}}/>
+            <Stack.Screen name = "Authentication" options={{headerShown: false}}/>
+            <Stack.Screen name="Application" options={{headerShown: false}}/>
         </Stack>
     )
 }
