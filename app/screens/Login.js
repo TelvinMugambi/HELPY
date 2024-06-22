@@ -30,7 +30,7 @@ export default function Login(){
         else {
             Alert.alert("Logged in")
             console.log("Button clicked:",session)
-            router.push("./Home")
+            router.push("./Profile")
         }
         setLoading(false)
     }
@@ -150,8 +150,7 @@ export default function Login(){
                     disabled={loading} 
                     onPress={() => signInWithEmail()}
                 />
-
-                
+            
                 <View style={{
                     flexDirection: "row",
                     justifyContent: "center",

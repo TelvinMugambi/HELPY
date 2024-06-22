@@ -32,7 +32,7 @@ export default function Index() {
       if (session && session.user) {
         router.push('../screens/Welcome');
       } else {
-        router.push('../screens/Search');
+        router.push('../screens/Home');
       }
     }
   }, [session, loading, rootNavigationState]);
