@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { View, ActivityIndicator } from 'react-native';
 import { useRootNavigationState, router } from 'expo-router';
 import { supabase } from '../utils/supabase';
-import Home from './screens/Home';
 
 export default function Index() {
   const [session, setSession] = useState(null);
@@ -30,9 +29,9 @@ export default function Index() {
   useEffect(() => {
     if (!loading && rootNavigationState?.key) {
       if (session && session.user) {
-        router.push('../screens/Welcome');
+        router.push('./Welcome');
       } else {
-        router.push('../screens/Home');
+        router.push('./(tabs)/Home');
       }
     }
   }, [session, loading, rootNavigationState]);
