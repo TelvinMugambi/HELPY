@@ -35,13 +35,13 @@ export default () => {
 
         }} 
         />
-        <Tabs.Screen name="Search" 
+        <Tabs.Screen name="Categories" 
         options={{
             headerShown: false,
             tabBarIcon: ()=>(
                 <View style={{alignItems: 'center', justifyContent:'center'}}>
-                    <Ionicons name="search-outline" size={24} color="black" />
-                    <Text>Search</Text>
+                    <Ionicons name="apps-outline" size={24} color="black" />
+                    <Text>Categories</Text>
                 </View>
             )
 
