@@ -20,7 +20,7 @@ export default function Welcome(){
                 
             <View>
                     <Image
-                        source={require("../assets/hero1.jpg")}
+                        source={require("../assets/welcome/hero1.jpg")}
                         style={{
                             height: 100,
                             width: 100,
@@ -36,7 +36,7 @@ export default function Welcome(){
                     />
 
                     <Image
-                        source={require("../assets/hero3.jpg")}
+                        source={require("../assets/welcome/hero3.jpg")}
                         style={{
                             height: 100,
                             width: 100,
@@ -53,7 +53,7 @@ export default function Welcome(){
                     />
 
                     <Image
-                        source={require("../assets/hero3.jpg")}
+                        source={require("../assets/welcome/hero3.jpg")}
                         style={{
                             width: 100,
                             height: 100,
@@ -70,7 +70,7 @@ export default function Welcome(){
                     />
 
                     <Image
-                        source={require("../assets/hero2.jpg")}
+                        source={require("../assets/welcome/hero2.jpg")}
                         style={{
                             height: 200,
                             width: 200,
