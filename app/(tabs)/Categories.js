@@ -9,15 +9,14 @@ import { Session } from '@supabase/supabase-js'
 
 export default function Categories() {
     const [searchQuery, setsearchQuery] = React.useState('')
-    const [loading, setLoading] = useState(true)
     const [fetcherror, setFetcherror] = useState(null)
     const [services, setServices] = useState(null)
 
     
 
     useEffect(()=>{
-        if (Session) getServices()
-    }, [Session])
+        getServices()
+    },[])
 
     async function getServices(){
         try {
@@ -55,12 +54,13 @@ export default function Categories() {
                 value={searchQuery}
                 />
             </View>
-            <View>
+            
+             <View>
                 {fetcherror && (<View><Text>{fetcherror}</Text></View>)}
                 {services && (
                     <View>
                         <Text></Text>
-                        {services.map(service =>(<View><Text>{service.name}</Text></View>))}
+                        {services.map(service =>(<View><Text>{service.service_name}</Text></View>))}
                     </View>
                 )}
             </View>
