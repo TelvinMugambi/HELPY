@@ -3,6 +3,7 @@ import { supabase } from '../../utils/supabase'
 import { View,Text, SafeAreaView, ScrollView, StyleSheet, Pressable } from 'react-native'
 import { Divider, Searchbar } from 'react-native-paper'
 import COLORS from '../../constants/color'
+import { router } from 'expo-router'
 
 export default function Categories() {
     const [categories, setCategories] = useState([])
@@ -93,12 +94,15 @@ export default function Categories() {
                     </View>
                     <View style={styles.rightContainer}>
                         {subcategories.map((subcategory, index) =>(
-                            <View key = {subcategory.sub_category_name} style={{
+                            <Pressable onPress={()=> router.push("../screens/BookingDetails")}>
+                                 <View key = {subcategory.sub_category_name} style={{
                                 
                             }}>
                                 <Text style={styles.text}>{subcategory.sub_category_name}</Text>
                                 <Divider style={{backgroundColor:COLORS.black}}/>
                             </View>
+                            </Pressable>
+                           
                         ))}
                     </View>
 
@@ -122,7 +126,7 @@ const styles = StyleSheet.create({
     },
     rightContainer: {
         
-        backgroundColor: 'lightgreen',
+        backgroundColor: COLORS.white,
         justifyContent: 'center',
         
     },
