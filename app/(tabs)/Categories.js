@@ -6,9 +6,11 @@ import COLORS from '../../constants/color'
 
 export default function Categories() {
     const [categories, setCategories] = useState([])
+    const [subcategories, setSubcategories] = useState([])
 
     useEffect(() =>{
-        getCategories()
+        getCategories(),
+        getSubcategories()
     }, [])
 
     async function getCategories(){
@@ -19,7 +21,29 @@ export default function Categories() {
 
             if (categories){
                 setCategories(categories)
-                console.log(categories)
+               
+            }
+            if(error){
+                console.log(error)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    async function getSubcategories(){
+        try {
+            let { data: sub_category, error } = await supabase
+                .from('sub_category')
+                .select(`
+                    sub_category_name,
+                    categories (
+                      category_id
+                    )
+                  `)
+            if (sub_category){
+                setSubcategories(sub_category)
+                
             }
             if(error){
                 console.log(error)
@@ -48,7 +72,7 @@ export default function Categories() {
                     <View style={styles.leftContainer}>
                     {/* Displays all the categories */}
                         {categories.map((category, index)=>(
-                            <Pressable onPress={() => console.log(category.category_name)}>
+                            <Pressable onPress={() => getSubcategories(category.category_id)}>
                                 <View key={category.category_name}>
                                     <Text  style={styles.text}>{category.category_name}</Text>
                                     <Divider style={{backgroundColor:COLORS.black}}/>
@@ -57,6 +81,14 @@ export default function Categories() {
                             
                         ))}
             
+                    </View>
+                    <View style={styles.rightContainer}>
+                        {subcategories.map((subcategory, index) =>(
+                            <View key = {subcategory.sub_category_name}>
+                                <Text style={styles.text}>{subcategory.sub_category_name}</Text>
+                                <Divider style={{backgroundColor:COLORS.black}}/>
+                            </View>
+                        ))}
                     </View>
 
                 </View>
