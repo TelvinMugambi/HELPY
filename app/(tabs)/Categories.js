@@ -5,6 +5,7 @@ import { Divider, Searchbar } from 'react-native-paper'
 import COLORS from '../../constants/color'
 import { router } from 'expo-router'
 
+
 export default function Categories() {
     const [categories, setCategories] = useState([])
     const [subcategories, setSubcategories] = useState([])

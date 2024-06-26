@@ -1,21 +1,29 @@
 import { View, Text, SafeAreaView, ScrollView, Pressable, TextInput } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import COLORS from '../../constants/color'
+import Button from '../../components/Button';
 import { Feather } from '@expo/vector-icons';
 import { router } from 'expo-router';
+import { Calendar } from 'react-native-calendars';
 
 export default function BookingDetails() {
+
+  const [date, setDate] = useState('')
+ 
+  
+  
   return (
-    <SafeAreaView style={{flex:1, borderRadius:8, backgroundColor: COLORS.grey, padding:30, elevation:1, borderCurve: 'circular', borderColor: COLORS.black}}>
+    <SafeAreaView style={{flex:1, borderWidth:1, backgroundColor: COLORS.grey, padding:30, elevation:1,borderColor: COLORS.black}}>
       <ScrollView>
         <View style={{
             flex:1,
             flexDirection: 'row',
             alignContent: 'center',
-            backgroundColor: COLORS.light_green,
+            backgroundColor: COLORS.white,
+            borderWidth:0.5
           }}>
             <Pressable onPress={() => router.back()}>
-              <Feather name="x-circle" size={24} color="black" />
+              <Feather name="x-circle" size={30} color="black" />
             </Pressable>
             <View style = {{
               flex:1,
@@ -25,7 +33,7 @@ export default function BookingDetails() {
 
             }}>
               
-              <Text>BOOKING FORM</Text>
+              <Text>FILL OUT THE FORM BELOW</Text>
             </View>
         </View>
 
@@ -167,6 +175,32 @@ export default function BookingDetails() {
               fontSize: 16,
               fontWeight: 400,
               marginVertical: 8
+            }}>Choose a preffered date</Text>
+            <Calendar
+              style={{
+                borderWidth:1
+              }} 
+              onDayPress={(date)=> setDate(date)}
+            />
+            <Text style={{
+              fontSize: 16,
+              fontWeight: 400,
+              marginVertical: 8
+            }}>Selected day: {date.dateString}</Text>
+          </View>
+            
+        </View>
+
+        <View style={{
+          flex:1,
+          backgroundColor: COLORS.white,
+          padding:12
+        }}>
+          <View style={{marginBottom:12}}>
+            <Text style={{
+              fontSize: 16,
+              fontWeight: 400,
+              marginVertical: 8
             }}>Service Description</Text>
             <View style= {{
               width: "100%",
@@ -190,7 +224,24 @@ export default function BookingDetails() {
           </View>
             
         </View>
-        
+
+        <View style = {{
+          flex: 1,
+          backgroundColor: COLORS.white,
+          padding:12
+        }}>
+          <Button
+            title="Choose service provider (1)"
+            filled
+            style={{
+                marginTop: 18,
+                marginBottom: 4,
+            }}
+            onPress={() => console.log('Show service providers')}
+            
+        />
+        </View>
+
       </ScrollView>
     </SafeAreaView>
   )
