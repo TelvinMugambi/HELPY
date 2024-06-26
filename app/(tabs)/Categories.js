@@ -97,6 +97,7 @@ export default function Categories() {
                     // height: '699px', 
                     top: '88px',
                     backgroundColor: COLORS.white,
+                    
                 }}>
                     <Text>All Categories</Text>
                     <View style = {{
@@ -108,281 +109,319 @@ export default function Categories() {
                         // width: '309px',
                         // height: '378px'
                     }}>
-                        
-                    
-                        <View style = {{
-                            flexDirection: 'row',
-                            justifyContent: 'center'
-                        }}>
-                            <TouchableOpacity onPress={() => console.log("Maintenance and Repairs")}
-                                    style={{
-                                        flex: 1,
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        flexDirection: 'row',
-                                        height: 52,
-                                        borderWidth: 1,
-                                        borderColor: COLORS.grey,
-                                        marginRight: 4,
-                                        borderRadius: 10
-                                    }}>
-                                        <Image source={require("../../assets/icons/maintenance_and_repairs.png")}
-                                            style={{
-                                                height: 36,
-                                                width: 36,
-                                                marginRight: 8
-                                            }}
-                                            resizeMode='contain'                            
-                                        />
-                                        <Text style={{fontSize: 12, fontWeight: 'bold'}}>{categories[0].category_name}</Text>
 
-                            </TouchableOpacity>
-
-                            <TouchableOpacity onPress={() => console.log("Cleaning services")}
-                                    style={{
-                                        flex: 1,
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        flexDirection: 'row',
-                                        height: 52,
-                                        borderWidth: 1,
-                                        borderColor: COLORS.grey,
-                                        marginRight: 4,
-                                        borderRadius: 10
-                                    }}>
-                                        <Image source={require("../../assets/icons/cleaning_services.png")}
-                                            style={{
-                                                height: 36,
-                                                width: 36,
-                                                marginRight: 8
-                                            }}
-                                            resizeMode='contain'                            
-                                        />
-                                        <Text style={{fontSize: 12, fontWeight: 'bold'}}>Cleaning services</Text>
-
-                            </TouchableOpacity>
-
-                        </View>
-
-                        <View style = {{
-                            flexDirection: 'row',
-                            justifyContent: 'center'
-                        }}>
-                            <TouchableOpacity onPress={() => console.log("Landscaping services")}
-                                    style={{
-                                        flex: 1,
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        flexDirection: 'row',
-                                        height: 52,
-                                        borderWidth: 1,
-                                        borderColor: COLORS.grey,
-                                        marginRight: 4,
-                                        borderRadius: 10
-                                    }}>
-                                        <Image source={require("../../assets/icons/landscaping.png")}
-                                            style={{
-                                                height: 36,
-                                                width: 36,
-                                                marginRight: 8
-                                            }}
-                                            resizeMode='contain'                            
-                                        />
-                                        <Text style={{fontSize: 12, fontWeight: 'bold'}}>Landscaping services</Text>
-
-                            </TouchableOpacity>
-
-                            <TouchableOpacity onPress={() => console.log("Renovation services")}
-                                    style={{
-                                        flex: 1,
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        flexDirection: 'row',
-                                        height: 52,
-                                        borderWidth: 1,
-                                        borderColor: COLORS.grey,
-                                        marginRight: 4,
-                                        borderRadius: 10
-                                    }}>
-                                        <Image source={require("../../assets/icons/remodeling.png")}
-                                            style={{
-                                                height: 36,
-                                                width: 36,
-                                                marginRight: 8
-                                            }}
-                                            resizeMode='contain'                            
-                                        />
-                                        <Text style={{fontSize: 12, fontWeight: 'bold'}}>Renovation services</Text>
-
-                            </TouchableOpacity>
-
-                        </View>
-
-                        <View style = {{
-                            flexDirection: 'row',
-                            justifyContent: 'center'
-                        }}>
-                            <TouchableOpacity onPress={() => console.log("Interior design")}
-                                    style={{
-                                        flex: 1,
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        flexDirection: 'row',
-                                        height: 52,
-                                        borderWidth: 1,
-                                        borderColor: COLORS.grey,
-                                        marginRight: 4,
-                                        borderRadius: 10
-                                    }}>
-                                        <Image source={require("../../assets/icons/interior-design.png")}
-                                            style={{
-                                                height: 36,
-                                                width: 36,
-                                                marginRight: 8
-                                            }}
-                                            resizeMode='contain'                            
-                                        />
-                                        <Text style={{fontSize: 12, fontWeight: 'bold'}}>Interior design</Text>
-
-                            </TouchableOpacity>
-
-                            <TouchableOpacity onPress={() => console.log("Pest Control")}
-                                    style={{
-                                        flex: 1,
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        flexDirection: 'row',
-                                        height: 52,
-                                        borderWidth: 1,
-                                        borderColor: COLORS.grey,
-                                        marginRight: 4,
-                                        borderRadius: 10
-                                    }}>
-                                        <Image source={require("../../assets/icons/pest_control.png")}
-                                            style={{
-                                                height: 36,
-                                                width: 36,
-                                                marginRight: 8
-                                            }}
-                                            resizeMode='contain'                            
-                                        />
-                                        <Text style={{fontSize: 12, fontWeight: 'bold'}}>Pest Control</Text>
-
-                            </TouchableOpacity>
-
-                        </View>
-
-                        <View style = {{
-                            flexDirection: 'row',
-                            justifyContent: 'center'
-                        }}>
-                            <TouchableOpacity onPress={() => console.log("Security and technology")}
-                                    style={{
-                                        flex: 1,
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        flexDirection: 'row',
-                                        height: 52,
-                                        borderWidth: 1,
-                                        borderColor: COLORS.grey,
-                                        marginRight: 4,
-                                        borderRadius: 10
-                                    }}>
-                                        <Image source={require("../../assets/icons/security.png")}
-                                            style={{
-                                                height: 36,
-                                                width: 36,
-                                                marginRight: 8
-                                            }}
-                                            resizeMode='contain'                            
-                                        />
-                                        <Text  style={{fontSize: 12, fontWeight: 'bold'}}>Security and technology</Text>
-
-                            </TouchableOpacity>
-
-                            <TouchableOpacity onPress={() => console.log("Handyman Services")}
-                                    style={{
-                                        flex: 1,
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        flexDirection: 'row',
-                                        height: 52,
-                                        borderWidth: 1,
-                                        borderColor: COLORS.grey,
-                                        marginRight: 4,
-                                        borderRadius: 10
-                                    }}>
-                                        <Image source={require("../../assets/icons/handyman.png")}
-                                            style={{
-                                                height: 36,
-                                                width: 36,
-                                                marginRight: 8
-                                            }}
-                                            resizeMode='contain'                            
-                                        />
-                                        <Text style={{fontSize: 12, fontWeight: 'bold'}}>Handyman Services</Text>
-
-                            </TouchableOpacity>
-
-                        </View>
-                        
-                        <View style = {{
-                            flexDirection: 'row',
-                            justifyContent: 'center'
-                        }}>
-                            <TouchableOpacity onPress={() => console.log("Moving and Storage")}
-                                    style={{
-                                        flex: 1,
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        flexDirection: 'row',
-                                        height: 52,
-                                        borderWidth: 1,
-                                        borderColor: COLORS.grey,
-                                        marginRight: 4,
-                                        borderRadius: 10
-                                    }}>
-                                        <Image source={require("../../assets/icons/moving.png")}
-                                            style={{
-                                                height: 36,
-                                                width: 36,
-                                                marginRight: 8
-                                            }}
-                                            resizeMode='contain'                            
-                                        />
-                                        <Text style={{fontSize: 12, fontWeight: 'bold'}}>Moving and Storage</Text>
-
-                            </TouchableOpacity>
-
-                            <TouchableOpacity onPress={() => console.log("Speciality services")}
-                                    style={{
-                                        flex: 1,
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        flexDirection: 'row',
-                                        height: 52,
-                                        borderWidth: 1,
-                                        borderColor: COLORS.grey,
-                                        marginRight: 4,
-                                        borderRadius: 10
-                                    }}>
-                                        <Image source={require("../../assets/icons/speciality.png")}
-                                            style={{
-                                                height: 36,
-                                                width: 36,
-                                                marginRight: 8
-                                            }}
-                                            resizeMode='contain'                            
-                                        />
-                                        <Text style={{fontSize: 12, fontWeight: 'bold'}}>Speciality services</Text>
-
-                            </TouchableOpacity>
-
-                        </View>
-
-                           
-                        
                     </View>
+                        
+                    {/* Maintenance and Repairs */}
+                    <View style = {{
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        margin:10,
+                        backgroundColor: COLORS.white
+                    }}>
+                        <TouchableOpacity onPress={() => console.log("Maintenance and Repairs")}
+                            style={{
+                                flex: 1,
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                flexDirection: 'column',
+                                height: 100,
+                                borderWidth: 1,
+                                borderColor: COLORS.grey,
+                                marginRight: 4,
+                                borderRadius: 10
+                            }}>
+                                <Image source={require("../../assets/icons/maintenance_and_repairs.png")}
+                                    style={{
+                                        height: 50,
+                                        width: 50,
+                                        margin: 8
+                                    }}
+                                    resizeMode='contain'                            
+                                />
+                                <Text style={{fontSize: 12, fontWeight: 'bold'}}>{categories[0].category_name}</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    {/* Cleaning services*/}
+                    <View style = {{
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        margin:10,
+                        backgroundColor: COLORS.white
+                    }}>
+                        <TouchableOpacity onPress={() => console.log("Cleaning services")}
+                            style={{
+                                flex: 1,
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                flexDirection: 'column',
+                                height: 100,
+                                borderWidth: 1,
+                                borderColor: COLORS.grey,
+                                marginRight: 4,
+                                borderRadius: 10
+                            }}>
+                                <Image source={require("../../assets/icons/cleaning_services.png")}
+                                    style={{
+                                        height: 50,
+                                        width: 50,
+                                        margin: 8
+                                    }}
+                                    resizeMode='contain'                            
+                                />
+                                <Text style={{fontSize: 12, fontWeight: 'bold'}}>{categories[1].category_name}</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    {/* Landscaping and Outdoor services*/}
+                    <View style = {{
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        margin:10,
+                        backgroundColor: COLORS.white
+                    }}>
+                        <TouchableOpacity onPress={() => console.log("Landscaping and Outdoor services")}
+                            style={{
+                                flex: 1,
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                flexDirection: 'column',
+                                height: 100,
+                                borderWidth: 1,
+                                borderColor: COLORS.grey,
+                                marginRight: 4,
+                                borderRadius: 10
+                            }}>
+                                <Image source={require("../../assets/icons/landscaping.png")}
+                                    style={{
+                                        height: 50,
+                                        width: 50,
+                                        margin: 8
+                                    }}
+                                    resizeMode='contain'                            
+                                />
+                                <Text style={{fontSize: 12, fontWeight: 'bold'}}>{categories[2].category_name}</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    {/* Renovation and Remodelling*/}
+                    <View style = {{
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        margin:10,
+                        backgroundColor: COLORS.white
+                    }}>
+                        <TouchableOpacity onPress={() => console.log("Renovation and Remodelling")}
+                            style={{
+                                flex: 1,
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                flexDirection: 'column',
+                                height: 100,
+                                borderWidth: 1,
+                                borderColor: COLORS.grey,
+                                marginRight: 4,
+                                borderRadius: 10
+                            }}>
+                                <Image source={require("../../assets/icons/remodeling.png")}
+                                    style={{
+                                        height: 50,
+                                        width: 50,
+                                        margin: 8
+                                    }}
+                                    resizeMode='contain'                            
+                                />
+                                <Text style={{fontSize: 12, fontWeight: 'bold'}}>{categories[3].category_name}</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    {/* Interior design and decorating*/}
+                    <View style = {{
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        margin:10,
+                        backgroundColor: COLORS.white
+                    }}>
+                        <TouchableOpacity onPress={() => console.log("Interior design and decorating")}
+                            style={{
+                                flex: 1,
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                flexDirection: 'column',
+                                height: 100,
+                                borderWidth: 1,
+                                borderColor: COLORS.grey,
+                                marginRight: 4,
+                                borderRadius: 10
+                            }}>
+                                <Image source={require("../../assets/icons/interior-design.png")}
+                                    style={{
+                                        height: 50,
+                                        width: 50,
+                                        margin: 8
+                                    }}
+                                    resizeMode='contain'                            
+                                />
+                                <Text style={{fontSize: 12, fontWeight: 'bold'}}>{categories[4].category_name}</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    {/* Pest control*/}
+                    <View style = {{
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        margin:10,
+                        backgroundColor: COLORS.white
+                    }}>
+                        <TouchableOpacity onPress={() => console.log("Pest control")}
+                            style={{
+                                flex: 1,
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                flexDirection: 'column',
+                                height: 100,
+                                borderWidth: 1,
+                                borderColor: COLORS.grey,
+                                marginRight: 4,
+                                borderRadius: 10
+                            }}>
+                                <Image source={require("../../assets/icons/pest_control.png")}
+                                    style={{
+                                        height: 50,
+                                        width: 50,
+                                        margin: 8
+                                    }}
+                                    resizeMode='contain'                            
+                                />
+                                <Text style={{fontSize: 12, fontWeight: 'bold'}}>{categories[5].category_name}</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    {/* Security and Technology*/}
+                    <View style = {{
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        margin:10,
+                        backgroundColor: COLORS.white
+                    }}>
+                        <TouchableOpacity onPress={() => console.log("Security and Technology")}
+                            style={{
+                                flex: 1,
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                flexDirection: 'column',
+                                height: 100,
+                                borderWidth: 1,
+                                borderColor: COLORS.grey,
+                                marginRight: 4,
+                                borderRadius: 10
+                            }}>
+                                <Image source={require("../../assets/icons/security.png")}
+                                    style={{
+                                        height: 50,
+                                        width: 50,
+                                        margin: 8
+                                    }}
+                                    resizeMode='contain'                            
+                                />
+                                <Text style={{fontSize: 12, fontWeight: 'bold'}}>{categories[6].category_name}</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    {/* Handyman services*/}
+                    <View style = {{
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        margin:10,
+                        backgroundColor: COLORS.white
+                    }}>
+                        <TouchableOpacity onPress={() => console.log("Handyman services")}
+                            style={{
+                                flex: 1,
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                flexDirection: 'column',
+                                height: 100,
+                                borderWidth: 1,
+                                borderColor: COLORS.grey,
+                                marginRight: 4,
+                                borderRadius: 10
+                            }}>
+                                <Image source={require("../../assets/icons/handyman.png")}
+                                    style={{
+                                        height: 50,
+                                        width: 50,
+                                        margin: 8
+                                    }}
+                                    resizeMode='contain'                            
+                                />
+                                <Text style={{fontSize: 12, fontWeight: 'bold'}}>{categories[7].category_name}</Text>
+                        </TouchableOpacity>
+                    </View> 
+
+                    {/* Moving and storage*/}
+                    <View style = {{
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        margin:10,
+                        backgroundColor: COLORS.white
+                    }}>
+                        <TouchableOpacity onPress={() => console.log("Moving and storage")}
+                            style={{
+                                flex: 1,
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                flexDirection: 'column',
+                                height: 100,
+                                borderWidth: 1,
+                                borderColor: COLORS.grey,
+                                marginRight: 4,
+                                borderRadius: 10
+                            }}>
+                                <Image source={require("../../assets/icons/moving.png")}
+                                    style={{
+                                        height: 50,
+                                        width: 50,
+                                        margin: 8
+                                    }}
+                                    resizeMode='contain'                            
+                                />
+                                <Text style={{fontSize: 12, fontWeight: 'bold'}}>{categories[8].category_name}</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    {/* Speciality services*/}
+                    <View style = {{
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        margin:10,
+                        backgroundColor: COLORS.white
+                    }}>
+                        <TouchableOpacity onPress={() => console.log("Speciality services")}
+                            style={{
+                                flex: 1,
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                flexDirection: 'column',
+                                height: 100,
+                                borderWidth: 1,
+                                borderColor: COLORS.grey,
+                                marginRight: 4,
+                                borderRadius: 10
+                            }}>
+                                <Image source={require("../../assets/icons/speciality.png")}
+                                    style={{
+                                        height: 50,
+                                        width: 50,
+                                        margin: 8
+                                    }}
+                                    resizeMode='contain'                            
+                                />
+                                <Text style={{fontSize: 12, fontWeight: 'bold'}}>{categories[9].category_name}</Text>
+                        </TouchableOpacity>
+                    </View>                                                                                                    
+                    
                 </View>
 
                 
@@ -404,11 +443,8 @@ export default function Categories() {
                             <Text>Cleaning Services</Text>
                         </View>
                     </Pressable> */}
-                
-                   
-             
 
-                
+                    
             </ScrollView>
         </SafeAreaView>
     )
