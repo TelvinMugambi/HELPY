@@ -36,19 +36,7 @@ export default () => {
         }} 
         />
 
-<Tabs.Screen name="Split" 
-        options={{
-            headerShown: false,
-            tabBarIcon: ()=>(
-                <View style={{alignItems: 'center', justifyContent:'center'}}>
-                    <Ionicons name="home-outline" size={24} color="black" />
-                    <Text>Split</Text>
-                </View>
-            )
 
-        }} 
-        />
-        
         <Tabs.Screen name="Categories" 
         options={{
             headerShown: false,

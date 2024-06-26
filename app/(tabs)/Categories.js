@@ -73,7 +73,16 @@ export default function Categories() {
                     {/* Displays all the categories */}
                         {categories.map((category, index)=>(
                             <Pressable onPress={() => getSubcategories(category.category_id)}>
-                                <View key={category.category_name}>
+                                <View key={category.category_name} style = {{
+                                    width: "100%",
+                                    height: 48,
+                                    borderColor: COLORS.black,
+                                    borderWidth: 1,
+                                    borderRadius: 8,
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    padding:12
+                                }}>
                                     <Text  style={styles.text}>{category.category_name}</Text>
                                     <Divider style={{backgroundColor:COLORS.black}}/>
                                 </View>
@@ -84,7 +93,9 @@ export default function Categories() {
                     </View>
                     <View style={styles.rightContainer}>
                         {subcategories.map((subcategory, index) =>(
-                            <View key = {subcategory.sub_category_name}>
+                            <View key = {subcategory.sub_category_name} style={{
+                                
+                            }}>
                                 <Text style={styles.text}>{subcategory.sub_category_name}</Text>
                                 <Divider style={{backgroundColor:COLORS.black}}/>
                             </View>
@@ -100,24 +111,24 @@ export default function Categories() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        
         flexDirection: 'row', // This will create a row layout
     },
     leftContainer: {
-        flex: 1,
+        
         backgroundColor: COLORS.white,
         justifyContent: 'center',
         
     },
     rightContainer: {
-        flex: 1,
+        
         backgroundColor: 'lightgreen',
         justifyContent: 'center',
-        alignItems: 'center',
+        
     },
     text: {
-        fontSize: 20,
-        fontWeight: 'bold',
+        fontSize: 13,
+        fontWeight: 'medium',
     },
 })
 
