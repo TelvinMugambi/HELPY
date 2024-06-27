@@ -8,6 +8,7 @@ import { router } from 'expo-router'
 
 export default function Categories() {
     const [categories, setCategories] = useState([])
+    const [category_ID, setCategory_ID] = useState([])
     const [subcategories, setSubcategories] = useState([])
 
     useEffect(() =>{
@@ -33,25 +34,26 @@ export default function Categories() {
         }
     }
 
-    async function getSubcategories(){
+    async function getSubcategories(category_ID) {
+        console.log('Fetching subcategories for category_ID:', category_ID);
         try {
-            let { data: sub_category, error } = await supabase
-                .from('sub_category')
-                .select(`
-                    sub_category_name,
-                    categories (
-                      category_id
-                    )
-                  `)
-            if (sub_category){
-                setSubcategories(sub_category)
-                
-            }
-            if(error){
-                console.log(error)
-            }
+          let { data: sub_category, error } = await supabase
+            .from('sub_category')
+            .select(`sub_category_name,categories (category_id)`)
+    
+          if (sub_category) {
+            setSubcategories(sub_category);
+            setCategory_ID(category_ID);
+            console.log('Fetching subcategories for category_ID:', category_ID);
+          }
+    
+          if (error) {
+            console.log('Could not fetch',error);
+            setSubcategories([])
+          }
         } catch (error) {
-            console.log(error)
+          console.log('Try catch failed:',error);
+          setSubcategories([])
         }
     }
     return(
@@ -74,8 +76,8 @@ export default function Categories() {
                     <View style={styles.leftContainer}>
                     {/* Displays all the categories */}
                         {categories.map((category, index)=>(
-                            <Pressable onPress={() => getSubcategories(category.category_id)}>
-                                <View key={category.category_name} style = {{
+                            <Pressable onPress={() => getSubcategories(category.category_ID)} key={category.category_name}>
+                                <View  style = {{
                                     width: "100%",
                                     height: 48,
                                     borderColor: COLORS.black,
@@ -95,8 +97,8 @@ export default function Categories() {
                     </View>
                     <View style={styles.rightContainer}>
                         {subcategories.map((subcategory, index) =>(
-                            <Pressable onPress={()=> router.push("../screens/BookingDetails")}>
-                                 <View key = {subcategory.sub_category_name} style={{
+                            <Pressable onPress={()=> router.push("../screens/BookingDetails")}key = {subcategory.sub_category_name}>
+                                 <View  style={{
                                 
                             }}>
                                 <Text style={styles.text}>{subcategory.sub_category_name}</Text>

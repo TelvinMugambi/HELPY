@@ -61,9 +61,6 @@ export default function Profile({session, url, size = 150, onUpload}){
         }
     }
 
-
-    
-
     async function downloadImage() {
         try {
           const { data, error } = await supabase.storage.from('avatars').download(path)
@@ -172,214 +169,211 @@ export default function Profile({session, url, size = 150, onUpload}){
     async function signOut() {
         const { error } = await supabase.auth.signOut()
         router.back("./Login")
-      }
-      
-    
+    }
+ 
     return(
-        <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
-            <ScrollView>
+      <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
+        <ScrollView>
+          <View style = {{
+              flex: 1,
+              marginHorizontal: 22
+          }}>
+            
+            <View style = {{
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: 24,
+                padding:12,
+                borderWidth:0.2
+            }}>
+                <Pressable onPress={() => uploadAvatar()}>
+                <Avatar.Image  
+                    size={100} 
+                    source={{ uri: avatarUrl }}
+                style = {{
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: 24}}
+                />
+                </Pressable>
 
                 <View style = {{
-                    flex: 1,
-                    marginHorizontal: 22
+                    position: 'absolute',
+                    bottom: 20,
+                    right: 20,
+                    backgroundColor: COLORS.grey,  // Optional: to make the icon more visible
+                    borderRadius: 12,  // Optional: to make the background a circle
+                    padding: 2,  // Optional: to add some space around the icon
                 }}>
-
-                
-
-                    <View style = {{
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        margin: 24
-                    }}>
-                        <Pressable onPress={() => uploadAvatar()}>
-                        <Avatar.Image  
-                            size={100} 
-                            source={{ uri: avatarUrl }}
-                        style = {{
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            margin: 24}}
-                        />
-                        </Pressable>
-
-                        {/* <View style = {{
-                            position: 'absolute',
-                            bottom: 0,
-                            right: 0,
-                            backgroundColor: 'white',  // Optional: to make the icon more visible
-                            borderRadius: 12,  // Optional: to make the background a circle
-                            padding: 2,  // Optional: to add some space around the icon
-                        }}>
-                            <Pressable onPress={() => console.log("Enable edit")}>
-                                <Ionicons name="pencil" size={24} color="black" />
-                            </Pressable>
-                        </View> */}
-                    </View>
-
-                    <View style={{marginBottom: 12}}>
-                            <Text style={{
-                                fontSize: 16,
-                                fontWeight: 400,
-                                marginVertical: 8
-                            }}>Email address</Text>
-
-                            <View style={{
-                                width: "100%",
-                                height: 48,
-                                borderColor: COLORS.black,
-                                borderWidth: 1,
-                                borderRadius: 8,
-                                alignItems: "center",
-                                justifyContent: "center",
-                                paddingLeft: 22
-                            }}>
-                                <TextInput
-                                    value={session?.user?.email}
-                                    disabled
-                                    style={{
-                                        width: "100%"
-                                    }}
-                                />
-                            </View>
-                    </View>
-
-                    <View style={{marginBottom: 12}}>
-                            <Text style={{
-                                fontSize: 16,
-                                fontWeight: 400,
-                                marginVertical: 8
-                            }}>Username</Text>
-
-                            <View style={{
-                                width: "100%",
-                                height: 48,
-                                borderColor: COLORS.black,
-                                borderWidth: 1,
-                                borderRadius: 8,
-                                alignItems: "center",
-                                justifyContent: "center",
-                                paddingLeft: 22
-                            }}>
-                                <TextInput
-                                    value={username || ''} 
-                                    onChangeText={(text) => setUsername(text)}
-                                    
-                                    style={{
-                                        width: "100%"
-                                    }}
-                                />
-                            </View>
-                    </View>
-
-                    <View style={{marginBottom: 12}}>
-                            <Text style={{
-                                fontSize: 16,
-                                fontWeight: 400,
-                                marginVertical: 8
-                            }}>Full Name</Text>
-
-                            <View style={{
-                                width: "100%",
-                                height: 48,
-                                borderColor: COLORS.black,
-                                borderWidth: 1,
-                                borderRadius: 8,
-                                alignItems: "center",
-                                justifyContent: "center",
-                                paddingLeft: 22
-                            }}>
-                                <TextInput
-                                    value={fullname || ''} 
-                                    onChangeText={(text) => setFullname(text)}
-                                    style={{
-                                        width: "100%"
-                                    }}
-                                />
-                            </View>
-                    </View>
-
-                    <View style={{marginBottom: 12}}>
-                            <Text style={{
-                                fontSize: 16,
-                                fontWeight: 400,
-                                marginVertical: 8
-                            }}>Phone Number</Text>
-
-                            <View style={{
-                                width: "100%",
-                                height: 48,
-                                borderColor: COLORS.black,
-                                borderWidth: 1,
-                                borderRadius: 8,
-                                alignItems: "center",
-                                justifyContent: "center",
-                                paddingLeft: 22
-                            }}>
-                                <TextInput
-                                    value={phone || ''} 
-                                    onChangeText={(text) => setPhone(text)}
-                                    style={{
-                                        width: "100%"
-                                    }}
-                                />
-                            </View>
-                    </View>
-
-                    <View style={{marginBottom: 12}}>
-                            <Text style={{
-                                fontSize: 16,
-                                fontWeight: 400,
-                                marginVertical: 8
-                            }}>Location</Text>
-
-                            <View style={{
-                                width: "100%",
-                                height: 48,
-                                borderColor: COLORS.black,
-                                borderWidth: 1,
-                                borderRadius: 8,
-                                alignItems: "center",
-                                justifyContent: "center",
-                                paddingLeft: 22
-                            }}>
-                                <TextInput
-                                    value={location || ''} 
-                                    onChangeText={(text) => setLocation(text)}
-                                    style={{
-                                        width: "100%"
-                                    }}
-                                />
-                            </View>
-                    </View>
-
-                    <Button
-                        title="Update"
-                        filled
-                        style={{
-                            marginTop: 18,
-                            marginBottom: 4,
-                        }}
-                        
-                        onPress={() => updateProfile()}
-                    
-                    />
-
-                    <Button
-                        title="Log out"
-                        filled
-                        style={{
-                            marginTop: 18,
-                            marginBottom: 4,
-                        }}
-                        
-                        onPress={() => signOut()}
-                    
-                    />
-
-
+                    <Pressable onPress={() => console.log("Enable edit")}>
+                        <Ionicons name="pencil" size={24} color="black" />
+                    </Pressable>
                 </View>
-            </ScrollView>
+            </View>
 
-        </SafeAreaView>
+            <View style={{marginBottom: 12}}>
+                    <Text style={{
+                        fontSize: 16,
+                        fontWeight: 400,
+                        marginVertical: 8
+                    }}>Email address</Text>
+
+                    <View style={{
+                        width: "100%",
+                        height: 48,
+                        borderColor: COLORS.black,
+                        borderWidth: 1,
+                        borderRadius: 8,
+                        alignItems: "center",
+                        justifyContent: "center",
+                        paddingLeft: 22
+                    }}>
+                        <TextInput
+                            value={session?.user?.email}
+                            disabled
+                            style={{
+                                width: "100%"
+                            }}
+                        />
+                    </View>
+            </View>
+
+            <View style={{marginBottom: 12}}>
+                    <Text style={{
+                        fontSize: 16,
+                        fontWeight: 400,
+                        marginVertical: 8
+                    }}>Username</Text>
+
+                    <View style={{
+                        width: "100%",
+                        height: 48,
+                        borderColor: COLORS.black,
+                        borderWidth: 1,
+                        borderRadius: 8,
+                        alignItems: "center",
+                        justifyContent: "center",
+                        paddingLeft: 22
+                    }}>
+                        <TextInput
+                            value={username || ''} 
+                            onChangeText={(text) => setUsername(text)}
+                            
+                            style={{
+                                width: "100%"
+                            }}
+                        />
+                    </View>
+            </View>
+
+            <View style={{marginBottom: 12}}>
+                    <Text style={{
+                        fontSize: 16,
+                        fontWeight: 400,
+                        marginVertical: 8
+                    }}>Full Name</Text>
+
+                    <View style={{
+                        width: "100%",
+                        height: 48,
+                        borderColor: COLORS.black,
+                        borderWidth: 1,
+                        borderRadius: 8,
+                        alignItems: "center",
+                        justifyContent: "center",
+                        paddingLeft: 22
+                    }}>
+                        <TextInput
+                            value={fullname || ''} 
+                            onChangeText={(text) => setFullname(text)}
+                            style={{
+                                width: "100%"
+                            }}
+                        />
+                    </View>
+            </View>
+
+            <View style={{marginBottom: 12}}>
+                    <Text style={{
+                        fontSize: 16,
+                        fontWeight: 400,
+                        marginVertical: 8
+                    }}>Phone Number</Text>
+
+                    <View style={{
+                        width: "100%",
+                        height: 48,
+                        borderColor: COLORS.black,
+                        borderWidth: 1,
+                        borderRadius: 8,
+                        alignItems: "center",
+                        justifyContent: "center",
+                        paddingLeft: 22
+                    }}>
+                        <TextInput
+                            value={phone || ''} 
+                            onChangeText={(text) => setPhone(text)}
+                            style={{
+                                width: "100%"
+                            }}
+                        />
+                    </View>
+            </View>
+
+            <View style={{marginBottom: 12}}>
+                    <Text style={{
+                        fontSize: 16,
+                        fontWeight: 400,
+                        marginVertical: 8
+                    }}>Location</Text>
+
+                    <View style={{
+                        width: "100%",
+                        height: 48,
+                        borderColor: COLORS.black,
+                        borderWidth: 1,
+                        borderRadius: 8,
+                        alignItems: "center",
+                        justifyContent: "center",
+                        paddingLeft: 22
+                    }}>
+                        <TextInput
+                            value={location || ''} 
+                            onChangeText={(text) => setLocation(text)}
+                            style={{
+                                width: "100%"
+                            }}
+                        />
+                    </View>
+            </View>
+
+            <Button
+                title="Update"
+                filled
+                style={{
+                    marginTop: 18,
+                    marginBottom: 4,
+                }}
+                
+                onPress={() => updateProfile()}
+            
+            />
+
+            <Button
+                title="Log out"
+                filled
+                style={{
+                    marginTop: 18,
+                    marginBottom: 4,
+                }}
+                
+                onPress={() => signOut()}
+            
+            />
+
+          </View>
+        </ScrollView>
+
+      </SafeAreaView>
     )
 }

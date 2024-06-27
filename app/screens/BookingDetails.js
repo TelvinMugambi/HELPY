@@ -231,13 +231,13 @@ export default function BookingDetails() {
           padding:12
         }}>
           <Button
-            title="Choose service provider (1)"
+            title="Choose service provider"
             filled
             style={{
                 marginTop: 18,
                 marginBottom: 4,
             }}
-            onPress={() => console.log('Show service providers')}
+            onPress={() => router.push("../screens/ServiceProviders")}
             
         />
         </View>
