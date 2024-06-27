@@ -24,6 +24,7 @@ export default function Categories() {
 
             if (categories){
                 setCategories(categories)
+                console.log(categories)
                
             }
             if(error){
