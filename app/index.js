@@ -30,7 +30,7 @@ export default function Index() {
       if (session && session.user) {
         router.push('./Welcome');
       } else {
-        router.push('./(tabs)/Home');
+        router.push('./Welcome');
       }
     }
   }, [session, loading, rootNavigationState]);

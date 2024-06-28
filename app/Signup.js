@@ -11,6 +11,7 @@ import { router } from 'expo-router';
 // the app is in the foreground. When this is added, you will continue to receive
 // `onAuthStateChange` events with the `TOKEN_REFRESHED` or `SIGNED_OUT` event
 // if the user's session is terminated. This should only be registered once.
+
 AppState.addEventListener('change', (state) => {
     if (state === 'active') {
       supabase.auth.startAutoRefresh()
@@ -20,6 +21,7 @@ AppState.addEventListener('change', (state) => {
 })
 
 export default function Signup (){
+    
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [loading, setLoading] = useState(false)
@@ -40,7 +42,7 @@ export default function Signup (){
         })
         if (data) {
             Alert.alert('Please check your inbox for email verification!') 
-            router.push("./Login")
+            router.push("./screens/UserInfo")
         } 
         
         if (error) Alert.alert(error.message)
@@ -120,7 +122,7 @@ export default function Signup (){
                             <TextInput
                                 placeholder='Enter your password'
                                 placeholderTextColor={COLORS.black}
-                                onChangeText={(text) => setPassword(text)}
+                                onChangeText={(password) => setPassword(password)}
                                 value={password}
                                 secureTextEntry={isPasswordShown}
                                 style={{
@@ -150,7 +152,7 @@ export default function Signup (){
 
 
                     <Button
-                        title="Sign Up"
+                        title="Authenticate"
                         filled
                         style={{
                             marginTop: 18,
