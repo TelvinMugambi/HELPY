@@ -59,16 +59,18 @@ export default () => {
                 </View>
             )
         }} />
-        <Tabs.Screen name = "Profile"  
+        <Tabs.Screen name = "Profile" 
         options={{
             headerShown: false,
             tabBarIcon: ()=>(
                 <View style={{alignItems: 'center', justifyContent:'center'}}>
-                    <Ionicons name="person-outline" size={24} color="black" />
+                    <Ionicons name="calendar-number-outline" size={24} color="black" />
                     <Text>Profile</Text>
                 </View>
             )
         }} />
+
+        
 
       </Tabs>
     )

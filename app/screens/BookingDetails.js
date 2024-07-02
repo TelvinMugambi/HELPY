@@ -1,15 +1,54 @@
 import { View, Text, SafeAreaView, ScrollView, Pressable, TextInput } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { supabase } from '../../utils/supabase';
 import COLORS from '../../constants/color'
 import Button from '../../components/Button';
 import { Feather } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { Calendar } from 'react-native-calendars';
+import { Session } from '@supabase/supabase-js'
+
 
 export default function BookingDetails() {
 
   const [date, setDate] = useState('')
- 
+  const [fullname, setFullname] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [location, setLocation] = useState('')
+  const [description, setDescription] = useState('')
+
+  async function updateBookingDetails(){
+    try {
+      
+      const { data, error } = await supabase
+      .from('bookings')
+      .upsert([
+        {id: '16'},
+        { fullname: fullname },
+        { email: email },
+        { phone: phone },
+        { location: location },
+        { service_description: description },
+      ])
+      .select()
+      if(data){
+        console.log(data)
+      
+      }
+
+      
+      if (error) {
+        throw error
+      }
+
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log(error.message)
+      }
+    }
+  }
+  
   
   
   return (
@@ -47,7 +86,7 @@ export default function BookingDetails() {
               fontSize: 16,
               fontWeight: 400,
               marginVertical: 8
-            }}>Username</Text>
+            }}>Fullname</Text>
             <View style= {{
               width: "100%",
               height: 48,
@@ -58,8 +97,11 @@ export default function BookingDetails() {
               paddingLeft: 22
             }}>
               <TextInput
-                placeholder='Display Username'
+              
+                placeholder='Display Fullname'
                 placeholderTextColor={COLORS.black}
+                onChangeText={(fullname)=> setFullname(fullname)}
+                value={fullname}
                 style={{
                    width: "100%"
                 }}
@@ -92,6 +134,8 @@ export default function BookingDetails() {
               <TextInput
                 placeholder='Display email address'
                 placeholderTextColor={COLORS.black}
+                onChangeText={(email)=> setEmail(email)}
+                value={email}
                 style={{
                    width: "100%"
                 }}
@@ -124,6 +168,8 @@ export default function BookingDetails() {
               <TextInput
                 placeholder='Display Phone Number'
                 placeholderTextColor={COLORS.black}
+                onChangeText={(phone)=> setPhone(phone)}
+                value={phone}
                 style={{
                    width: "100%"
                 }}
@@ -156,6 +202,8 @@ export default function BookingDetails() {
               <TextInput
                 placeholder='Display Location'
                 placeholderTextColor={COLORS.black}
+                onChangeText={(location)=> setLocation(location)}
+                value={location}
                 style={{
                    width: "100%"
                 }}
@@ -214,6 +262,8 @@ export default function BookingDetails() {
               <TextInput
                 placeholder='Give us more details of the your desiresd task......'
                 placeholderTextColor={COLORS.black}
+                onChangeText={(description)=> setDescription(description)}
+                value={description}
                 style={{
                    width: "100%"
                 }}
@@ -237,7 +287,7 @@ export default function BookingDetails() {
                 marginTop: 18,
                 marginBottom: 4,
             }}
-            onPress={() => router.push("../screens/ServiceProviders")}
+            onPress={() => updateBookingDetails()}
             
         />
         </View>

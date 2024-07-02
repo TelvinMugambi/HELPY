@@ -1,15 +1,23 @@
-import { View, Text, SafeAreaView, ScrollView, TextInput } from 'react-native'
-import React, { useState } from 'react'
+import { View, Text, SafeAreaView, ScrollView, TextInput, Alert } from 'react-native'
+import React, { useContext, useState, useEffect } from 'react'
 import Button from '../../components/Button'
 import COLORS from '../../constants/color'
 import { supabase } from '../../utils/supabase'
 
 export default function UserInfo() {
-    
+    const [loading, setLoading] = useState(true)
     const [username, setUsername] = useState('')
     const [fullname, setFullname] = useState('')
     const [phone, setPhone] = useState('')
-    const[location, setLocation] = useState('')
+    const [location, setLocation] = useState('')
+   
+
+    useEffect(()=>{
+        if (session){
+            console.log ("user info session:", session)
+            getProfile()
+        }
+    },[session])
 
     async function insertUser(){
 
@@ -39,6 +47,68 @@ export default function UserInfo() {
 
     }
     
+    async function getProfile() {
+        try {
+          setLoading(true)
+          if (!session?.user) throw new Error('No user on the session!')
+    
+          const { data, error, status } = await supabase
+            .from('profiles')
+            .select(`username, website, avatar_url`)
+            .eq('id', session?.user.id)
+            .single()
+          if (error && status !== 406) {
+            throw error
+          }
+          console.log(session?.user.id)
+          console.log(session?.user.email)
+    
+          if (data) {
+            setUsername(data.username)
+            setFullname(data.fullname)
+            setAvatarUrl(data.avatar_url)
+            setPhone(data.phone)
+            setLocation(data.location)
+          }
+        } catch (error) {
+          if (error instanceof Error) {
+            Alert.alert(error.message)
+          }
+        } finally {
+          setLoading(false)
+        }
+    }
+
+    async function updateProfile() {
+        try {
+          setLoading(true)
+          if (!session?.user) throw new Error('No user on the session!')
+    
+          const updates = {
+            id: session?.user.id,
+            username,
+            fullname,
+            phone,
+            location,
+            updated_at: new Date(),
+          }
+    
+          const { error } = await supabase.from('profiles').upsert(updates)
+    
+          if (error) {
+            throw error
+          }
+        } catch (error) {
+          if (error instanceof Error) {
+            Alert.alert(error.message)
+          }
+        } finally {
+          setLoading(false)
+        }
+    }
+
+    
+    
     return (
         <SafeAreaView style={{flex:1, backgroundColor: COLORS.white}}>
             <ScrollView>
@@ -61,7 +131,34 @@ export default function UserInfo() {
                     </View>
 
                     
-                    
+                    <View style={{ marginBottom: 12 }}>
+                            <Text style={{
+                            fontSize: 16,
+                            fontWeight: 400,
+                            marginVertical: 8
+                        }}>Email</Text>
+
+                        <View style={{
+                            width: "100%",
+                            height: 48,
+                            borderColor: COLORS.black,
+                            borderWidth: 1,
+                            borderRadius: 8,
+                            alignItems: "center",
+                            justifyContent: "center",
+                            paddingLeft: 22
+                        }}>
+                            <TextInput
+                                value={session?.user?.email}
+                                disabled
+                                style={{
+                                    width: "100%",
+                                    padding:10
+                                }}
+                            />
+                        </View>
+                    </View>
+
                     <View style={{ marginBottom: 12 }}>
                             <Text style={{
                             fontSize: 16,
@@ -190,7 +287,7 @@ export default function UserInfo() {
                             marginTop: 18,
                             marginBottom: 4,
                         }}
-                        onPress={() => insertUser()}
+                        onPress={() => updateProfile()}
                     
                     />
 

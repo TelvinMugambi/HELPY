@@ -36,11 +36,7 @@ export default function Login(){
         setLoading(false)
     }
 
-    async function getSession(){
-        const {data:session} = await supabase.auth.getSession()
-
-        console.log(session)
-    }
+    
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>

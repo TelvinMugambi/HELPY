@@ -20,7 +20,7 @@ export default function Categories() {
         try {
             let { data: categories, error } = await supabase
             .from('categories')
-            .select('category_name')
+            .select('*')
 
             if (categories){
                 setCategories(categories)
@@ -40,7 +40,7 @@ export default function Categories() {
         try {
           let { data: sub_category, error } = await supabase
             .from('sub_category')
-            .select(`sub_category_name,categories (category_id)`)
+            .select("*").eq("category_id", category_ID)
     
           if (sub_category) {
             setSubcategories(sub_category);
@@ -76,8 +76,10 @@ export default function Categories() {
                 <View style = {styles.container}>
                     <View style={styles.leftContainer}>
                     {/* Displays all the categories */}
-                        {categories.map((category, index)=>(
-                            <Pressable onPress={() => getSubcategories(category.category_ID)} key={category.category_name}>
+                        {categories.map((category, index)=>{
+                            console.log("category is",category)
+                            return (
+                            <Pressable onPress={() => getSubcategories(category.category_id)} key={category.category_name}>
                                 <View  style = {{
                                     width: "100%",
                                     height: 48,
@@ -93,7 +95,7 @@ export default function Categories() {
                                 </View>
                             </Pressable>
                             
-                        ))}
+                        )})}
             
                     </View>
                     <View style={styles.rightContainer}>

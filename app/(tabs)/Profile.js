@@ -16,7 +16,6 @@ export default function Profile({session, url, size = 150, onUpload}){
 
     const [uploading, setUploading] = useState(false)
     const[loading, setLoading] = useState(true)
-    const [updating, setUpdating] = useState(true)
     const [username, setUsername] = useState('')
     const [fullname, setFullname] = useState('')
     const [phone, setPhone] = useState('')
@@ -132,60 +131,49 @@ export default function Profile({session, url, size = 150, onUpload}){
         }
     }
 
-    // async function updateProfile({
-    //     username,
-    //     fullname,
-    //     avatar_url,
-    //     phone,
-    //     location
-    //   }) {
-    //     setUpdating(true)
-    //     try {
-    //       setLoading(true)
-    //       if (!session?.user) throw new Error('No user on the session!')
+    async function updateProfile({
+        username,
+        fullname,
+        avatar_url,
+        phone,
+        location
+      }) {
+        try {
+          setLoading(true)
+          if (!session?.user) throw new Error('No user on the session!')
     
-    //       const updates = {
-    //         id: session?.user.id,
-    //         username,
-    //         fullname,
-    //         avatar_url,
-    //         phone,
-    //         location,
-    //         updated_at: new Date(),
-    //       }
+          const updates = {
+            id: session?.user.id,
+            username,
+            fullname,
+            avatar_url,
+            phone,
+            location,
+            updated_at: new Date(),
+          }
     
-    //       const { error } = await supabase.from('profiles').upsert(updates)
+          const { error } = await supabase.from('profiles').upsert(updates)
     
-    //       if (error) {
-    //         throw error
-    //       }
-    //     } catch (error) {
-    //       if (error instanceof Error) {
-    //         Alert.alert(error.message)
-    //       }
-    //     } finally {
-    //       setLoading(false)
-    //     }
-    // }
-
-    async function updateProfile(){
-
-      const { data, error } = await supabase
-      .from('profiles')
-      .update({ username: 'otherValue' })
-      .eq('some_column', 'someValue')
-      .select()
-
+          if (error) {
+            throw error
+          }
+        } catch (error) {
+          if (error instanceof Error) {
+            Alert.alert(error.message)
+          }
+        } finally {
+          setLoading(false)
+        }
     }
 
     async function signOut() {
         const { error } = await supabase.auth.signOut()
         if(error){
           console.log(error)
-        }else{
-          router.back("../Login")
         }
-        
+        else{
+            router.push("../Login")
+          }
     }
  
     return(
@@ -196,38 +184,36 @@ export default function Profile({session, url, size = 150, onUpload}){
               marginHorizontal: 22
           }}>
             
-            { updating == true? 
-            <>
             <View style = {{
-              alignItems: 'center',
-              justifyContent: 'center',
-              margin: 24,
-              padding:12,
-              borderWidth:0.2
-          }}>
-              <Pressable onPress={() => uploadAvatar()}>
-              <Avatar.Image  
-                  size={100} 
-                  source={{ uri: avatarUrl }}
-              style = {{
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  margin: 24}}
-              />
-              </Pressable>
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: 24,
+                padding:12,
+                borderWidth:0.2
+            }}>
+                <Pressable onPress={() => uploadAvatar()}>
+                <Avatar.Image  
+                    size={100} 
+                    source={{ uri: avatarUrl }}
+                style = {{
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: 24}}
+                />
+                </Pressable>
 
-              <View style = {{
-                  position: 'absolute',
-                  bottom: 20,
-                  right: 20,
-                  backgroundColor: COLORS.grey,  // Optional: to make the icon more visible
-                  borderRadius: 12,  // Optional: to make the background a circle
-                  padding: 2,  // Optional: to add some space around the icon
-              }}>
-                  <Pressable onPress={() => updateProfile()}>
-                      <Ionicons name="pencil" size={24} color="black" />
-                  </Pressable>
-              </View>
+                <View style = {{
+                    position: 'absolute',
+                    bottom: 20,
+                    right: 20,
+                    backgroundColor: COLORS.grey,  // Optional: to make the icon more visible
+                    borderRadius: 12,  // Optional: to make the background a circle
+                    padding: 2,  // Optional: to add some space around the icon
+                }}>
+                    <Pressable onPress={() => console.log("Enable edit")}>
+                        <Ionicons name="pencil" size={24} color="black" />
+                    </Pressable>
+                </View>
             </View>
 
             <View style={{marginBottom: 12}}>
@@ -367,6 +353,18 @@ export default function Profile({session, url, size = 150, onUpload}){
             </View>
 
             <Button
+                title="Update"
+                filled
+                style={{
+                    marginTop: 18,
+                    marginBottom: 4,
+                }}
+                
+                onPress={() => updateProfile()}
+            
+            />
+
+            <Button
                 title="Log out"
                 filled
                 style={{
@@ -377,149 +375,6 @@ export default function Profile({session, url, size = 150, onUpload}){
                 onPress={() => signOut()}
             
             />
-            </> : 
-            <>
-            
-            <View style = {{
-              alignItems: 'center',
-              justifyContent: 'center',
-              margin: 24,
-              padding:12,
-              borderWidth:0.2
-          }}>  
-              <Avatar.Image  
-                  size={100} 
-                  source={{ uri: avatarUrl }}
-              style = {{
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  margin: 24}}
-              />
-            </View>
-
-            <View style={{marginBottom: 12}}>
-                    <Text style={{
-                        fontSize: 16,
-                        fontWeight: 400,
-                        marginVertical: 8
-                    }}>Username</Text>
-
-                    <View style={{
-                        width: "100%",
-                        height: 48,
-                        borderColor: COLORS.black,
-                        borderWidth: 1,
-                        borderRadius: 8,
-                        alignItems: "center",
-                        justifyContent: "center",
-                        paddingLeft: 22
-                    }}>
-                        <TextInput
-                            value={username || ''} 
-                            onChangeText={(text) => setUsername(text)}
-                            
-                            style={{
-                                width: "100%"
-                            }}
-                        />
-                    </View>
-            </View>
-
-            <View style={{marginBottom: 12}}>
-                    <Text style={{
-                        fontSize: 16,
-                        fontWeight: 400,
-                        marginVertical: 8
-                    }}>Full Name</Text>
-
-                    <View style={{
-                        width: "100%",
-                        height: 48,
-                        borderColor: COLORS.black,
-                        borderWidth: 1,
-                        borderRadius: 8,
-                        alignItems: "center",
-                        justifyContent: "center",
-                        paddingLeft: 22
-                    }}>
-                        <TextInput
-                            value={fullname || ''} 
-                            onChangeText={(text) => setFullname(text)}
-                            style={{
-                                width: "100%"
-                            }}
-                        />
-                    </View>
-            </View>
-
-            <View style={{marginBottom: 12}}>
-                    <Text style={{
-                        fontSize: 16,
-                        fontWeight: 400,
-                        marginVertical: 8
-                    }}>Phone Number</Text>
-
-                    <View style={{
-                        width: "100%",
-                        height: 48,
-                        borderColor: COLORS.black,
-                        borderWidth: 1,
-                        borderRadius: 8,
-                        alignItems: "center",
-                        justifyContent: "center",
-                        paddingLeft: 22
-                    }}>
-                        <TextInput
-                            value={phone || ''} 
-                            onChangeText={(text) => setPhone(text)}
-                            style={{
-                                width: "100%"
-                            }}
-                        />
-                    </View>
-            </View>
-
-            <View style={{marginBottom: 12}}>
-                    <Text style={{
-                        fontSize: 16,
-                        fontWeight: 400,
-                        marginVertical: 8
-                    }}>Location</Text>
-
-                    <View style={{
-                        width: "100%",
-                        height: 48,
-                        borderColor: COLORS.black,
-                        borderWidth: 1,
-                        borderRadius: 8,
-                        alignItems: "center",
-                        justifyContent: "center",
-                        paddingLeft: 22
-                    }}>
-                        <TextInput
-                            value={location || ''} 
-                            onChangeText={(text) => setLocation(text)}
-                            style={{
-                                width: "100%"
-                            }}
-                        />
-                    </View>
-            </View>
-            <Button
-                title="Done"
-                filled
-                style={{
-                    marginTop: 18,
-                    marginBottom: 4,
-                }}
-                
-                onPress={() => setUpdating(false)}
-            
-            />
-
-            </>
-            }
-            
 
           </View>
         </ScrollView>
