@@ -26,3 +26,23 @@ Inorder to run this project you need to install the following dependencies
 Clone this github project to run the application
     `git clone https://github.com/TelvinMugambi/HELPY.git`
     `cd HELPY`
+___
+
+## USAGE INSTRUCTIONS
+
+### How to run
+    1. EXPO on your device
+        To run this application on your device, you will need to install expo which is available for android and ios in the google play store and app store respectively.
+
+    2. Launch the project
+        To run the application in you local enviroment, you will need to run the command.
+        `npm start`
+        There will be a genereated QR Code.
+        Open the expo app on you device and scan the QR code to start the project on your device
+    ___
+
+
+## PROJECT STRUCTURE
+The project consists of several folders though we will be focusing on a select few folders.
+The app folder contains the root file where the project will run from in the index file. It also describes the navigation system such as the stack and tab navigation. It also has the screens that describe the frontend such as the Signup and Login page.
+The assests folder hold data such as images, icons
