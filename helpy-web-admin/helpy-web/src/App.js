@@ -1,24 +1,37 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Login from './Login';
 import './App.css';
+import Landing from './Landing'; // Create this component
+import { supabase, fetchUserRole } from './supabaseClient';
 
 function App() {
+  const ProtectedRoute = ({ element, ...rest }) => {
+    const user = supabase.auth.user();
+    const [role, setRole] = React.useState(null);
+
+    React.useEffect(() => {
+      if (user) {
+        fetchUserRole(user.id).then((role) => {
+          setRole(role);
+        });
+      }
+    }, [user]);
+
+    if (role === 'admin') {
+      return element;
+    } else {
+      return <Navigate to="/" />;
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/landing" element={<Landing />} />
+      </Routes>
+    </Router>
   );
 }
 
