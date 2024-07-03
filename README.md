@@ -47,13 +47,13 @@ Helpy Web is a React-based web application that provides an admin dashboard for 
 
 ## Project Structure 
 
-helpy-web/
-├── node_modules/
-├── public/
+helpy-web
+├── node_modules
+├── public
 │   ├── index.html
 │   └── ...
-├── src/
-│   ├── components/
+├── src
+│   ├── components
 │   │   ├── Landing.js
 │   │   ├── Login.js
 │   │   └── ...
