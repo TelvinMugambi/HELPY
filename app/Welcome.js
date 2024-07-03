@@ -150,29 +150,7 @@ export default function Welcome(){
                         
 
                     </View>
-                    <View style={{
-                        flexDirection: "row",
-                        marginTop: 12,
-                        justifyContent: "center"
-                    }}>
-                        <Text style={{
-                            fontSize: 16,
-                            color: COLORS.white
-                        }}>Already have an account ?</Text>
-                        <Pressable
-                            onPress={() => router.push('./(tabs)/Home')}
-                        >
-                            <Text style={{
-                                fontSize: 16,
-                                color: COLORS.white,
-                                fontWeight: "bold",
-                                marginLeft: 4
-                            }}>Home</Text>
-                        </Pressable>
-
-                        
-
-                    </View>
+                   
                 </View>
             </View>
         </LinearGradient>

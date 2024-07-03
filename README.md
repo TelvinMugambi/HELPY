@@ -43,6 +43,24 @@ ___
 
 
 ## PROJECT STRUCTURE
-The project consists of several folders though we will be focusing on a select few folders.
-The app folder contains the root file where the project will run from in the index file. It also describes the navigation system such as the stack and tab navigation. It also has the screens that describe the frontend such as the Signup and Login page.
-The assests folder hold data such as images, icons
+The structure below describes the main structure of the applicatiomn
+├── app
+│ ├── tabs
+│ │ ├── Home.js
+│ │ ├── Categories.js
+│ │ ├── Booking.js
+│ │ ├── Profile.js
+│ │ └── _layout.js
+│ ├── screens
+│ │ ├── BookingDetails.js
+│ │ ├── BookingDraft.js
+│ │ ├── BookingHistory.js
+│ │ ├── BookingUpcoming.js
+│ │ └── ServiceProviders.js
+│ ├── index.js
+│ ├── Welcome.js
+│ ├── Signup.js
+│ ├── Login.js
+│ └── _layout.js
+
+
