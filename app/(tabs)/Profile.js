@@ -166,6 +166,7 @@ export default function Profile({session, url, size = 150, onUpload}){
         }
     }
 
+  
     async function signOut() {
         const { error } = await supabase.auth.signOut()
         if(error){
