@@ -9,11 +9,11 @@ ___
 
 ## DEPENDENCIES
 Inorder to run this project you need to install the following dependencies
-1. NPM
-2. EXPO
-3. SUPABASE
-4. REACT-NATIVE-CALENDARS
-5. REACT-NATIVE-PAPER
+1. [npm](https://www.npmjs.com/)
+2. [expo](https://expo.dev/)
+3. [supabase](https://supabase.com/)
+4. [react-native-calendars](https://www.npmjs.com/package/react-native-calendars)
+5. [react-native-paper](https://www.npmjs.com/package/react-native-paper)
 
 To install the above dependencies and others run the following command:
 ```bash
@@ -223,7 +223,7 @@ The structure below describes the main structure of the applicatiomn
  
 The MIT License (MIT)
 
-Copyright (c) 2015 Chris Kibble
+Copyright (c) 2024 NickoBeast
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
