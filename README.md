@@ -24,8 +24,6 @@ npm i
 Clone this github project to run the application
     ```bash
     git clone https://github.com/TelvinMugambi/HELPY.git
-    ```
-    ```bash
     cd HELPY
     ```
 ___
