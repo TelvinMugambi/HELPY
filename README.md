@@ -10,22 +10,26 @@ ___
 ## DEPENDENCIES
 Inorder to run this project you need to install the following dependencies
 1. NPM
-    1. On Windows and Mac:
-        Follow through [this] (https://positiwise.com/blog/how-to-install-npm-and-node-js-on-mac-and-windows) guide to download nodejs on windows and mac environment
-    2. On Linux:
-        To download the latest version of npm, on the command line, run the following command:
-        `npm install -g npm`
 2. EXPO
-    After installing npm, run this command to install expo:
-        `npm install expo`
 3. SUPABASE
-    You need to have the supabase CLI: 
-        `npm install @supabase/supabase-js`
+4. REACT-NATIVE-CALENDARS
+5. REACT-NATIVE-PAPER
+
+To install the above dependencies and others run the following command:
+```bash
+npm i
+```
 
 ## REPOSITORY
 Clone this github project to run the application
-    `git clone https://github.com/TelvinMugambi/HELPY.git`
-    `cd HELPY`
+    ```bash
+    git clone https://github.com/TelvinMugambi/HELPY.git
+    ```
+    ```bash
+    cd HELPY
+    npm i
+    npm start
+    ```
 ___
 
 ## USAGE INSTRUCTIONS
@@ -36,7 +40,9 @@ ___
 
     2. Launch the project
         To run the application in you local enviroment, you will need to run the command.
-        `npm start`
+        ```bash
+        npm start
+        ```
         There will be a genereated QR Code.
         Open the expo app on you device and scan the QR code to start the project on your device
     ___
