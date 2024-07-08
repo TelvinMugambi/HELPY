@@ -9,9 +9,9 @@ const TopTab = createMaterialTopTabNavigator();
 export default function Booking(){
     return(
         <TopTab.Navigator>
-            <TopTab.Screen name = "Upcoming" component={BookingUpcoming} />
-            <TopTab.Screen name = "History" component={BookingHistory}/>
-            <TopTab.Screen name = "Draft" component={BookingDraft}/>
+            <TopTab.Screen name = "Pending" component={BookingUpcoming} />
+            <TopTab.Screen name = "Progress" component={BookingHistory}/>
+            <TopTab.Screen name = "Rejected" component={BookingDraft}/>
         </TopTab.Navigator>
     )
 }
