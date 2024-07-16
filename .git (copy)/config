@@ -1,0 +1,23 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = https://github.com/TelvinMugambi/HELPY.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
+[branch "User-Authentication"]
+	remote = origin
+	merge = refs/heads/User-Authentication
+[branch "Profile_Management"]
+	remote = origin
+	merge = refs/heads/Profile_Management
+[branch "Home_Frontend"]
+	remote = origin
+	merge = refs/heads/Home_Frontend
+[branch "service-providers"]
+	remote = origin
+	merge = refs/heads/service-providers

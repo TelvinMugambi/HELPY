@@ -1,0 +1,10 @@
+0000000000000000000000000000000000000000 28733576bd292d8e54c2feed214d678cc8ef0d87 Telvin <you@example.com> 1718620044 +0300	branch: Created from refs/remotes/origin/Profile_Management
+28733576bd292d8e54c2feed214d678cc8ef0d87 413f6bf4aad431ce86750cfe1996b078e974a0f1 Telvin <you@example.com> 1718620054 +0300	merge main: Fast-forward
+413f6bf4aad431ce86750cfe1996b078e974a0f1 1fc0917f873243ce8e01ee855a1bc603f1155e47 Telvin <you@example.com> 1718626457 +0300	commit: Implementing Tab nav
+1fc0917f873243ce8e01ee855a1bc603f1155e47 fe8974b391947adc66f522a1e7ea7bf6da0e695b Telvin <you@example.com> 1718654908 +0300	commit: Added Profile Management
+fe8974b391947adc66f522a1e7ea7bf6da0e695b b8a5dbefd6f9b29b20f7eb052813c98b0957f559 Telvin <you@example.com> 1718683378 +0300	commit: Fixed Tab nav debugging Profile
+b8a5dbefd6f9b29b20f7eb052813c98b0957f559 1ff65a3434b543fb012e84241fb8adb106a56b05 Telvin <you@example.com> 1718696446 +0300	commit: Fixed Login
+1ff65a3434b543fb012e84241fb8adb106a56b05 7bb2d5b4f5364f35402bb2fff85c25c5aa89cfb9 Telvin <you@example.com> 1718789010 +0300	commit: Changed the file structure, Tab navigation is not fixed
+7bb2d5b4f5364f35402bb2fff85c25c5aa89cfb9 7d5a2e0790d3a86cac2a2008aebbcf26c779fe44 Telvin <you@example.com> 1718871694 +0300	commit: Redone file structure
+7d5a2e0790d3a86cac2a2008aebbcf26c779fe44 e2c3625fdeaba9aae0b66f464e7a6e0566dd2ab8 Telvin <you@example.com> 1719044651 +0300	commit: Added profile frontend. Implemented signout
+e2c3625fdeaba9aae0b66f464e7a6e0566dd2ab8 7dc479c74218eb68cef53f4dc004c4d8d2196d6f Telvin <you@example.com> 1719207804 +0300	commit: Added Tab Navigation
